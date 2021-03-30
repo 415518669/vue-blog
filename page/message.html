@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/message.css">
+    <link rel="stylesheet" href="./css/about.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="content">
+            <a class="title" href="/">我的博客 | 技术博客</a>
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li><a href="/searchMap.html">地图</a></li>
+                <li><a href="/about.html">关于</a></li>
+                <li><a href="/message.html">留言</a></li>
+            </ul>
+            <div class="search">
+                <input class="searchInt" type="text" placeholder="搜索">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+    <div class="containar">
+        <div class="containar_left" id="containar_left">
+            <div class="about_left_content">
+                <h2>关于我</h2>
+                <p>
+                    博主郑晓，大葱省，啤酒之城，算是80后大叔。
+                    <p>会修电脑的野生程序员</p>
+                    <p>PHP是世界上最好的语言</p>
+                </p>
+            </div>
+            <div class="about_message">
+                <div class="about_message" id="about_message">
+                    <div class="now_message">关于：目前有{{totle}}条留言</div>
+                    <div class="message_list">
+                        <div class="message" v-for="item in commentLIst" :key="item.id">
+                            <div class="message_header">
+                                <img src="./img/bg.jpg" alt="">
+                                <span><b>{{item.username}}</b>{{item.options}}:发表于 {{item.ctime}} <a style="cursor: pointer;" @click="replyComment(item.id, item.username)">[回复]</a></span>
+                            </div>
+                            <p>{{item.comment}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blog_comment" id="blog_comment">
+                <div>发表评论</div>
+                <input type="hidden" id="comment_parent" value="-1">
+                <input type="hidden" id="comment_parent_name" value="0">
+                <input class="comment_name" type="text" placeholder="昵称">
+                <input class="comment_mail" type="text" placeholder="邮箱(评论被回复时你能收到通知)">
+                <br>
+                <textarea class="textarea" name="" id="textarea" cols="30" rows="10"
+                    style="width: 706px; margin-left: 20px;"></textarea>
+                <br>
+                <input class="verification" type="text" placeholder="验证码">
+                <span v-html="svg" @click="changeSvg"></span>
+                <br>
+                <button @click="submit">提交</button>
+                <button @click="resetAll">重写</button>
+            </div>
+        </div>
+        <div class="containar_right">
+            <div class="right_content">
+                <p>随机标签云</p>
+                <div class="tags_list">
+                    <a class="tags_list" href="/">php</a>
+                    <a class="tags_list" href="/">php</a>
+                    <a class="tags_list" href="/">php</a>
+                    <a class="tags_list" href="/">php</a>
+                    <a class="tags_list" href="/">php</a>
+                </div>
+            </div>
+            <div class="right_content">
+                <p>最近热门</p>
+                <div class="hot_list">
+                    <ul>
+                        <li><a href="/">使用码云git的webhook实现生产环境代</a></li>
+                        <li><a href="/">使用码云git的webhook实现生产环境代</a></li>
+                        <li><a href="/">使用码云git的webhook实现生产环境代</a></li>
+                        <li><a href="/">使用码云git的webhook实现生产环境代</a></li>
+                        <li><a href="/">使用码云git的webhook实现生产环境代</a></li>
+                        <li><a href="/">使用码云git的webhook实现生产环境代</a></li>
+                        <li><a href="/">使用码云git的webhook实现生产环境代</a></li>
+                        <li><a href="/">使用码云git的webhook实现生产环境代</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right_content">
+                <p>最新评论</p>
+                <div class="comment_list">
+                    <ul>
+                        <li>
+                            <div>
+                                <span class="name">松松</span>
+                                <span class="time">[两周前]</span>
+                            </div>
+                            <p>
+                                <a href="/">内容留言的</a>
+                            </p>
+
+                        </li>
+                        <li>
+                            <div>
+                                <span class="name">松松</span>
+                                <span class="time">[两周前]</span>
+                            </div>
+                            <p>
+                                <a href="/">内容留言的</a>
+                            </p>
+
+                        </li>
+                        <li>
+                            <div>
+                                <span class="name">松松</span>
+                                <span class="time">[两周前]</span>
+                            </div>
+                            <p>
+                                <a href="/">内容留言的</a>
+                            </p>
+
+                        </li>
+                        <li>
+                            <div>
+                                <span class="name">松松</span>
+                                <span class="time">[两周前]</span>
+                            </div>
+                            <p>
+                                <a href="/">内容留言的</a>
+                            </p>
+
+                        </li>
+                        <li>
+                            <div>
+                                <span class="name">松松</span>
+                                <span class="time">[两周前]</span>
+                            </div>
+                            <p>
+                                <a href="/">内容留言的</a>
+                            </p>
+
+                        </li>
+                        <li>
+                            <div>
+                                <span class="name">松松</span>
+                                <span class="time">[两周前]</span>
+                            </div>
+                            <p>
+                                <a href="/">内容留言的</a>
+                            </p>
+
+                        </li>
+                        <li>
+                            <div>
+                                <span class="name">松松</span>
+                                <span class="time">[两周前]</span>
+                            </div>
+                            <p>
+                                <a href="/">内容留言的</a>
+                            </p>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <ul>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+        </ul>
+        <p>Copyright © 2010-2021 郑晓个人博客 All rights reserved. 由免费开源的WordPress强力驱动. 鲁ICP备14017955号-1</p>
+    </footer>
+    <script src="https://lib.baomitu.com/vue/2.6.12/vue.common.dev.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./js/about.js"></script>
+</body>
+
+</html>

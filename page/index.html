@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="https://lib.baomitu.com/vue/2.6.12/vue.common.dev.js"></script>
+    <style>
+        [v-cloak] {
+            display: none !important;
+        }
+    </style>
+
+</head> 
+
+<body>
+    <header class="header">
+        <div class="content">
+            <a class="title" href="/">我的博客 | 技术博客</a>
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li><a href="/searchMap.html">地图</a></li>
+                <li><a href="/about.html">关于</a></li>
+                <li><a href="/message.html">留言</a></li>
+            </ul>
+            <div class="search">
+                <input class="searchInt" type="text" placeholder="搜索">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+    <div class="containar">
+        <div class="containar_left" id="containar_left">
+            <div class="every-day">
+                <p>每日一句</p>
+                <span v-text="msg"></span>
+                <span class="author">——————lkajsldkhla</span>
+            </div>
+            <div class="article_list">
+                <div class="article" v-for="item in article" :key="item.id">
+                    <a :href="item.link" v-cloak>{{ item.title }}</a>
+                    <p v-cloak>
+                        {{ item.content}}
+                    </p>
+                    <footer v-cloak>
+                        发布于{{item.ctime}} | 浏览：{{item.views}} | Tags：{{item.tags}}
+                    </footer>
+                </div>
+            </div>
+            <div class="toolPage">
+                <ul @click="changePage($event)">
+                    <li><</li>
+                    <li v-for="item in countPage" :key="item" :class="{active: page == item}" v-cloak>{{item}}</li>
+                    <li>></li>
+                </ul>
+            </div>
+        </div>
+        <div class="containar_right" id="containar_right">
+            <div class="right_content" id="tags">
+                <p>随机标签云</p>
+                <div class="tags_list">
+                    <a @click="juapTags(item.id)" v-for="(item, index) in listArr" :key="index" :style="{ fontSize:randomFontsize(), color: randomColor()}">{{item.tag}}</a>
+                </div>
+            </div>
+            <div class="right_content">
+                <p>最近热门</p>
+                <div class="hot_list" id="hot">
+                    <ul>
+                        <li v-for="(item, index) in hotList" :key="index" ><a :href="item.link">{{item.title}}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right_content">
+                <p>最新评论</p>
+                <div class="comment_list" id="comment">
+                    <ul>
+                        <li v-for="(item, index) in commentList" :key="index" >
+                            <div>
+                                <span class="name">{{item.username}}</span>
+                                <span class="time">[{{item.time}}]</span>
+                            </div>
+                            <p @click="goComment(item.blog_id)">
+                                <a>{{item.comment.slice(0,8)}}</a>
+                            </p>
+                            
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right_content">
+                <p>友情链接</p>
+                <div class="friend_link">
+                    <ul>
+                        <li><a href="/">使用码云</a></li>
+                        <li><a href="/">使用码云</a></li>
+                        <li><a href="/">使用码云</a></li>
+                        <li><a href="/">使用码云</a></li>
+                        <li><a href="/">使用码云</a></li>
+                        <li><a href="/">使用码云</a></li>
+                        <li><a href="/">使用码云</a></li>
+                        <li><a href="/">使用码云</a></li>
+                        <li><a href="/">使用码云</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <ul>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">C/C++</a></li>
+        </ul>
+        <p>Copyright © 2010-2021 郑晓个人博客 All rights reserved. 由免费开源的WordPress强力驱动. 鲁ICP备14017955号-1</p>
+    </footer>
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/tags.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .demo {
+            width: 100%;
+            position: relative;
+        }
+
+
+
+        .int {
+            display: inline-block;
+            width: 100px;
+            height: 36px;
+            font-size: 18px;
+            position: absolute;
+            top: 50%;
+            margin-top: -18px;
+            margin-left: 20px;
+        }
+
+        .title_tags {
+            height: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        textarea {
+            position: relative;
+            top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo">
+        <div class="title_tags">
+            <label for="title">title:</label>
+            <input type="text" id="title" placeholder="请输入标题">
+            <label for="tags" >tags:</label>
+            <input type="text" id="tags" placeholder="请输入标签">
+        </div>
+        <textarea name="" id="" cols="100" rows="10"></textarea>
+        <input class="int" type="submit">
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    <script>
+        var win = window.alert;
+        $('.int').on('click', submit)
+        document.getElementsByTagName('textarea')[0].value = '段桂红傻子';
+
+        function submit() {
+            var content = document.getElementsByTagName('textarea')[0].value;
+            var title = document.getElementById("title").value;
+            var tags = document.getElementById("tags").value;
+            $.ajax({
+                url: "/editBlog?title=" + title + "&tags=" + tags,
+                method: "POST",
+                data: content,
+                success: function (res) {
+                    console.log(res);
+                    // win('提交成功');
+                    document.getElementsByTagName('textarea')[0].value = '';
+                    document.getElementById("title").value = "";
+                    document.getElementById("tags").value = "";
+                },
+                error: function (res) {
+                    console.log('请求失败');
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

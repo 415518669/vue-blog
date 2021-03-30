@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    width: 90%;
+    margin: 0 auto;
+}
+
+h4 {
+    text-align: center;
+    padding: 10px 0px;
+}
+
+.title {
+    width: 100%;
+    border: 1px solid #EEEEEE;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 10px;
+    margin: 10px 0px;
+}
+
+.article {
+    width: 100%;
+    border: 1px solid #EEEEEE;
+
+}
+
+.article p {
+    padding: 15px 0px;
+}
+
+.article ul {
+    padding: 0px 15px;
+}
+
+.article li {
+    margin: 5px 0px;
+}
+
+.article li a {
+    color: #191919;
+}
+
+.article li a:hover {
+    color: aqua;
+}
+
+.footer p{
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 12px;
+    color: #292929;
+}
